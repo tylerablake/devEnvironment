@@ -1,0 +1,58 @@
+This is a list of all the performance enhancements I do to Visual Studio to get my machine ready for development using Visual Studio.
+
+
+
+
+
+This list contains changes I've found but haven't tried yet.
+Disable F1. (Environment->Keyboard) This is probably the best advice that I found somewhere.
+Disable "Animate environment tools" (Environment->General).
+Disable Start Page (Environment->Startup).
+Disable "Track Active Item in Solution Explorer" (Projects and Solutions).
+Disable Navigation Bar (Text Editor->C#). I think this is available for every language.
+Set "AutoToolboxPopulate" to false (Windows Forms Designer).
+You can set the Code view as the default view when viewing Windows Forms. Just right-click on the cs file and select "Open With...".
+Open Visual Studio using the command line (devenv) rather than using the Start menu. I don't know why but I notice it loads faster.
+Turn off Track Changes. (Text Editor->Track changes)
+
+
+
+
+
+
+Speeding up ReSharper
+Turn off Solution-Wide Analysis
+Disable context actions
+  In ReSharper options, go to Code Editing | Context Actions and Code Editing | [Language] | Context Actions, and uncheck the actions that are less helpful to you
+Speed up typing
+  If you experience slowdown while typing, you can turn off member signatures under ReSharper | Options | IntelliSense | Completion Appearance:
+  If this doesn’t help, switch back to built-in Visual Studio IntelliSense under ReSharper | Options | Environment | IntelliSense | General:
+Disable formatting
+  To speed up typing, you can also disable auto-format options under ReSharper | Options | Environment | General to avoid code formatting while typing:
+Disable unit testing
+  If you don't use the ReSharper unit test runner, you can save some processing time by turning it off. Go to ReSharper | Options | Tools | Unit Testing and clear the corresponding check-box.
+Disable the navigation bar
+  If you use the File Structure window, then you probably don't use the navigation bar on top of the editor. If so, you can disable it by unchecking the corresponding check-box in Tools | Options | Text Editor | C#.
+Speed up editor scrolling
+  The problem with editor scrolling arises due to hardware-accelerated editor rendering. If you experience this, try turning off the following options under Tools | Options | Environment | General:
+    Automatically adjust visual experience based on client performance
+    Use hardware graphics acceleration if available
+Save time on startup
+  Turning off the start page and the news channel might save some time on startup. To do so, go to Tools | Options | Environment and choose to show empty environment at startup.
+Disable unused extensions
+  Go to Tools | Extension Manager, go through the list and check if you really need each of them. You can uninstall or disable the unused ones.
+
+
+
+
+
+
+
+
+
+Parallels Desktop for Mac
+
+If you're running Visual Studio in a Windows virtual machine on your Mac using Parallels Desktop, ReSharper IntelliSense lists might be very slow to render.
+
+If this occurs in your setup, consider switching from Coherence mode to Full Screen mode. For guidelines on switching between the two modes, please see this Parallels Knowledge Base entry.
+
