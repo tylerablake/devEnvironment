@@ -1,28 +1,3 @@
-Configuring Visual Studio preferences
-Open Visual Studio options (Tools | Options) and configure the preferences as follows:
-
-Locations of the preferences described here correspond to Visual Studio 2015.
-Environment | General: disable Automatically adjust visual experience based on client performance, disable Enable rich client visual experience, enable Use hardware graphics acceleration if available. These adjustments will reduce UI lags and improve overall performance.
-Source Control | Plug-in Selection: select None for the source control plug-in. This will turn off Git or another VCS provider and improve overall performance.
-Environment | Startup: choose to show empty environment at startup and disable downloading content. Turning off the start page and the news channel might save some time on startup.
-Environment | AutoRecover: disable Save AutoRecover information. This will reduce disk operations.
-Text Editor | General: disable Track changes. This will reduce disk operations.
-Text Editor | All Languages | Scroll Bars: disable Show annotations over vertical scroll bar. This will reduce editor lags.
-Text Editor | All Languages | CodeLens: disable CodeLens. This will improve overall performance.
-Debugging | Just-In-Time: disable Just-In-Time Debugging for Script. This will speed up build and debug.
-Web Forms Designer | General: disable Web Forms Designer. This will reduce UI and editor lags.
-XAML Designer | General: disable XAML Designer. This will reduce UI and editor lags.
-Text Editor | [Language] | Formatting: disable all auto-formatting preferences. If you use ReSharper's formatting assistance, this will prevent your code from being reformatted twice and reduce editor lags.
-Text Editor | C#: if you use File Structure window, then you probably don't use the navigation bar on top of the editor and you can safely disable it on this options page.
-Environment | Synchronized settings: disable synchronization of settings. This will improve overall performance.
-Configuring Roslyn
-In most of reported performance problems, ReSharper was installed in Visual Studio 2015. This is no surprise: when your Visual Studio solution grows large, two code analysis engines (ReSharper and Roslyn) working simultaneously can reach the memory limit of the 32-bit process that they share. 
-Although there is no official way to disable Roslyn, you can check out this article to find some alternative solutions. 
-You can also take a look at Roslyn performance considerations for large solutions.
-
-Other Visual Studio adjustments
-Uninstall unused packages and extensions from Visual Studio
-If you are not working on some projects, you can unload them from Visual Studio and reload them back when needed. Right-click on the project or a solution folder in the Solution Explorer and choose Unload Project or Unload Projects in Solution Folder - this will improve overall performance.
 ReSharper
 
 Before starting to tune up ReSharper, check that you are running the latest version, and if not, consider updating.
