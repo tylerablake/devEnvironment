@@ -1,65 +1,27 @@
 This is a list of all the performance enhancements I do to Visual Studio to get my machine ready for development using Visual Studio.
 
+Configuring Visual Studio preferences
+Open Visual Studio options (Tools | Options) and configure the preferences as follows:
 
+Locations of the preferences described here correspond to Visual Studio 2015.
+Environment | General: disable Automatically adjust visual experience based on client performance, disable Enable rich client visual experience, enable Use hardware graphics acceleration if available. These adjustments will reduce UI lags and improve overall performance.
+Source Control | Plug-in Selection: select None for the source control plug-in. This will turn off Git or another VCS provider and improve overall performance.
+Environment | Startup: choose to show empty environment at startup and disable downloading content. Turning off the start page and the news channel might save some time on startup.
+Environment | AutoRecover: disable Save AutoRecover information. This will reduce disk operations.
+Text Editor | General: disable Track changes. This will reduce disk operations.
+Text Editor | All Languages | Scroll Bars: disable Show annotations over vertical scroll bar. This will reduce editor lags.
+Text Editor | All Languages | CodeLens: disable CodeLens. This will improve overall performance.
+Debugging | Just-In-Time: disable Just-In-Time Debugging for Script. This will speed up build and debug.
+Web Forms Designer | General: disable Web Forms Designer. This will reduce UI and editor lags.
+XAML Designer | General: disable XAML Designer. This will reduce UI and editor lags.
+Text Editor | [Language] | Formatting: disable all auto-formatting preferences. If you use ReSharper's formatting assistance, this will prevent your code from being reformatted twice and reduce editor lags.
+Text Editor | C#: if you use File Structure window, then you probably don't use the navigation bar on top of the editor and you can safely disable it on this options page.
+Environment | Synchronized settings: disable synchronization of settings. This will improve overall performance.
+Configuring Roslyn
+In most of reported performance problems, ReSharper was installed in Visual Studio 2015. This is no surprise: when your Visual Studio solution grows large, two code analysis engines (ReSharper and Roslyn) working simultaneously can reach the memory limit of the 32-bit process that they share. 
+Although there is no official way to disable Roslyn, you can check out this article to find some alternative solutions. 
+You can also take a look at Roslyn performance considerations for large solutions.
 
-
-Visual Studio
-(http://www.geocortex.com/about/blog/archive/slow-visual-studio-performance-solved/)
-
-This list contains changes I've found but haven't tried yet.
-Disable F1. (Environment->Keyboard) This is probably the best advice that I found somewhere.
-Disable "Animate environment tools" (Environment->General).
-Disable Start Page (Environment->Startup).
-Disable "Track Active Item in Solution Explorer" (Projects and Solutions).
-Disable Navigation Bar (Text Editor->C#). I think this is available for every language.
-Set "AutoToolboxPopulate" to false (Windows Forms Designer).
-You can set the Code view as the default view when viewing Windows Forms. Just right-click on the cs file and select "Open With...".
-Open Visual Studio using the command line (devenv) rather than using the Start menu. I don't know why but I notice it loads faster.
-Turn off Track Changes. (Text Editor->Track changes)
-
-
-
-
-
-
-Speeding up ReSharper 
-(https://www.jetbrains.com/help/resharper/Speeding_Up_ReSharper.html)
-(https://indasoft.wordpress.com/2016/02/11/ultimate-guide-to-speeding-up-resharper-and-visual-studio/)
-Turn off Solution-Wide Analysis
-Disable context actions
-  In ReSharper options, go to Code Editing | Context Actions and Code Editing | [Language] | Context Actions, and uncheck the actions that are less helpful to you
-Speed up typing
-  If you experience slowdown while typing, you can turn off member signatures under ReSharper | Options | IntelliSense | Completion Appearance:
-  If this doesn’t help, switch back to built-in Visual Studio IntelliSense under ReSharper | Options | Environment | IntelliSense | General:
-Disable formatting
-  To speed up typing, you can also disable auto-format options under ReSharper | Options | Environment | General to avoid code formatting while typing:
-Disable unit testing
-  If you don't use the ReSharper unit test runner, you can save some processing time by turning it off. Go to ReSharper | Options | Tools | Unit Testing and clear the corresponding check-box.
-Disable the navigation bar
-  If you use the File Structure window, then you probably don't use the navigation bar on top of the editor. If so, you can disable it by unchecking the corresponding check-box in Tools | Options | Text Editor | C#.
-Speed up editor scrolling
-  The problem with editor scrolling arises due to hardware-accelerated editor rendering. If you experience this, try turning off the following options under Tools | Options | Environment | General:
-    Automatically adjust visual experience based on client performance
-    Use hardware graphics acceleration if available
-Save time on startup
-  Turning off the start page and the news channel might save some time on startup. To do so, go to Tools | Options | Environment and choose to show empty environment at startup.
-Disable unused extensions
-  Go to Tools | Extension Manager, go through the list and check if you really need each of them. You can uninstall or disable the unused ones.
-Disable editing enhancements in ReSharper - in ReSharper options turn off all the boxes under "Options - Environment - Editor"
-Disable ReSharper IntelliSense in the ReSharper options, keep the default "Visual Studio" IntelliSense mode.
-Disable "Track Active items" - "Tools - Options - Projects and Solutions - Track Active Item in Solution Explorer". This will turn off cursor-jumping in the solution explorer whenever you select different files in different projects.
-Disable IntelliTrace (Ultimate edition only) - in the "Tools - Options - IntelliTrace - General"
-Disable "Track changes" in "Tools - Options - Text Editor". This way Visual Studio will not display a colored bar next to the changed lines in your source files.
-Turn off Visual Studio's Git integration ("Tools | Options | Source Control | Current source control plug-in", set to "None", then restart Visual Studio)
-
-
-Using a Mac?
-
-Parallels Desktop for Mac
-(https://stormpath.com/blog/ultimate-guide-to-using-visual-studio-on-a-mac)
-  If you're running Visual Studio in a Windows virtual machine on your Mac using Parallels Desktop, ReSharper IntelliSense lists might be very slow to render.
-  If this occurs in your setup, consider switching from Coherence mode to Full Screen mode. For guidelines on switching between the two modes, please see this Parallels Knowledge Base entry.
-  
-  Speeding up Windows for VM's / RDP
-  (https://support.microsoft.com/en-us/help/15055/windows-7-optimize-windows-better-performance)
-
+Other Visual Studio adjustments
+Uninstall unused packages and extensions from Visual Studio
+If you are not working on some projects, you can unload them from Visual Studio and reload them back when needed. Right-click on the project or a solution folder in the Solution Explorer and choose Unload Project or Unload Projects in Solution Folder - this will improve overall performance.
