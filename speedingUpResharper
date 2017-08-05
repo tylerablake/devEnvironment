@@ -1,0 +1,66 @@
+Configuring Visual Studio preferences
+Open Visual Studio options (Tools | Options) and configure the preferences as follows:
+
+Locations of the preferences described here correspond to Visual Studio 2015.
+Environment | General: disable Automatically adjust visual experience based on client performance, disable Enable rich client visual experience, enable Use hardware graphics acceleration if available. These adjustments will reduce UI lags and improve overall performance.
+Source Control | Plug-in Selection: select None for the source control plug-in. This will turn off Git or another VCS provider and improve overall performance.
+Environment | Startup: choose to show empty environment at startup and disable downloading content. Turning off the start page and the news channel might save some time on startup.
+Environment | AutoRecover: disable Save AutoRecover information. This will reduce disk operations.
+Text Editor | General: disable Track changes. This will reduce disk operations.
+Text Editor | All Languages | Scroll Bars: disable Show annotations over vertical scroll bar. This will reduce editor lags.
+Text Editor | All Languages | CodeLens: disable CodeLens. This will improve overall performance.
+Debugging | Just-In-Time: disable Just-In-Time Debugging for Script. This will speed up build and debug.
+Web Forms Designer | General: disable Web Forms Designer. This will reduce UI and editor lags.
+XAML Designer | General: disable XAML Designer. This will reduce UI and editor lags.
+Text Editor | [Language] | Formatting: disable all auto-formatting preferences. If you use ReSharper's formatting assistance, this will prevent your code from being reformatted twice and reduce editor lags.
+Text Editor | C#: if you use File Structure window, then you probably don't use the navigation bar on top of the editor and you can safely disable it on this options page.
+Environment | Synchronized settings: disable synchronization of settings. This will improve overall performance.
+Configuring Roslyn
+In most of reported performance problems, ReSharper was installed in Visual Studio 2015. This is no surprise: when your Visual Studio solution grows large, two code analysis engines (ReSharper and Roslyn) working simultaneously can reach the memory limit of the 32-bit process that they share. 
+Although there is no official way to disable Roslyn, you can check out this article to find some alternative solutions. 
+You can also take a look at Roslyn performance considerations for large solutions.
+
+Other Visual Studio adjustments
+Uninstall unused packages and extensions from Visual Studio
+If you are not working on some projects, you can unload them from Visual Studio and reload them back when needed. Right-click on the project or a solution folder in the Solution Explorer and choose Unload Project or Unload Projects in Solution Folder - this will improve overall performance.
+ReSharper
+
+Before starting to tune up ReSharper, check that you are running the latest version, and if not, consider updating.
+
+Configuring ReSharper preferences
+ReSharper provides plenty of different features, and if necessary, you can disable most of them in ReSharper options. So the general rule here is: if you have any performance problems, disable features you do not use.
+
+Open ReSharper options (ReSharper | Options) and configure the preferences as follows:
+
+Code Inspection | Settings: on this options page, you can disable various aspects of code inspection. Here is what you can disable, starting from minimum disabled features:
+In Visual Studio 2015 and later versions, clear the Do not show Visual Studio bulb... check box. This will prevent ReSharper from triggering Roslyn analyzers and thus will reduce CPU usage.
+If you do not use solution-wide analysis, disable it or consider disabling warnings in solution-wide analysis. Even if it is disabled, you can find all code issues in your solution at any time by running code inspection for the whole solution.
+If there is any source code in your solution that you do not need to analyze, add the corresponding files and folders to the ignore list.
+
+You can add the the current file to the ignore list by pressing Ctrl+Shift+Alt+8. Pressing the shortcut again will re-enable the inspection for this file. If you want to bind a different shortcut for this operation, look for the ReSharper_EnableDaemon command in Visual Studio option.
+The ultimate step is to clear the Enable code analysis check box. This will disable the design-time inspection, but you will still be able to run code inspection in the desired scope when you need it.
+Environment | Products & Features: here you can disable ReSharper features that you do not use. For example, clearing the Unit Testing check box will disable all ReSharper unit testing features and save some memory.
+Environment | General: in the Store solution caches in: selector, choose 'System TEMP' or any custom folder. If your solution is not under a VCS, you can also choose 'Solution folder'. It is not recommended to choose 'User local settings folder' (%LOCALAPPDATA%) The problem with this folder is that Visual Studio's directory watcher is triggered each time ReSharper writes to this folder, which happens very often.
+Environment | IntelliSense: you may need to configure this if you experience slowdowns on typing. Similarly to code inspection, you can disable specific parts of ReSharper IntelliSense or turn it off completely and fall back to native Visual Studio's IntelliSense. Here is what you can disable, starting from minimum disabled features:
+Environment | IntelliSense | Completion Appearance: clear Show member signatures, Show symbol types, Show summary. This will simplify building completion lists.
+Environment | IntelliSense | General: turn off ReSharper's IntelliSense for specific languages (Custom IntelliSense) or turn it off altogether (Visual Studio).
+Environment | Editor | Editor Behavior: disable Auto-format on semicolon and Auto-format on closing brace to avoid reformatting code while typing; also disable Correct common language-specific typos, which will turn off some typing assist features. Clearing these check boxes will speed up typing.
+Environment | Editor | Editor Appearance: disable Highlight current line, Highlight matching delimiters. This might reduce the chance of UI and editor lags.
+Environment | Extension Manager: disable ReSharper extensions that you do not use.
+Tools | Build: enable ReSharper build. ReSharper's incremental build can considerably reduce build time, especially for large solutions.
+Code Editing | Context Actions: here you can disable the context actions that are not helpful to you.
+Code Editing | JavaScript | Inspections: if you work with JavaScript and have some performance problems, do not enable the Analyse properties' context when inspecting code option.
+Code Editing | Third-Party Code: here you can add C++, JavaScript, TypeScript, CSS, HTML and JSON files, folders and wildcards to be treated either as 'skipped' or 'library'. ReSharper will completely ignore 'skipped' files, and treat 'library' files as read-only – indexed for navigation, but no inspections, quick-fixes and refactorings.
+Code Editing | Language Injections: on this page, you can disable automatic language injections that are of no interest to you.
+Do not overuse complex UI controls
+Close unused unit tests sessions.
+Close unused type, project, and assembly dependency diagrams.
+If you enable solution-wide analysis, you can close the Errors/Warnings in Solution window as you will see the number of errors/warnings in the status bar anyway.
+
+
+If suspending ReSharper helps improve the performance but you still want to use it occasionally for code analysis, code cleanup or reformatting code, you might want to have a shortcut that quickly switches ReSharper on and off. Here is how to do it: go to Tools | Options | Environment | Keyboard and find the ReSharper_ToggleSuspended command, then press a shortcut of your choice and click Assign.
+
+https://www.jetbrains.com/help/img/dotnet/2017.1/speed_up5.png
+
+
+
