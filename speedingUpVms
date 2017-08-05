@@ -1,0 +1,11 @@
+
+Using a Mac?
+
+Parallels Desktop for Mac
+(https://stormpath.com/blog/ultimate-guide-to-using-visual-studio-on-a-mac)
+  If you're running Visual Studio in a Windows virtual machine on your Mac using Parallels Desktop, ReSharper IntelliSense lists might be very slow to render.
+  If this occurs in your setup, consider switching from Coherence mode to Full Screen mode. For guidelines on switching between the two modes, please see this Parallels Knowledge Base entry.
+  
+   
+Speeding up Windows for VM's / RDP
+  (https://support.microsoft.com/en-us/help/15055/windows-7-optimize-windows-better-performance)
