@@ -1,0 +1,27 @@
+This is a list of custom Visual Studio keybinds I use, and how you set them up.
+
+
+My Keybinds
+
+Description: Go to File
+VS Command: Edit.GoToAll
+My Keybind : Ctrl + T
+
+Description : Locate Current File in Solution Exploer
+VS Command : SolutionExplorer.SyncWithActiveDocument
+My Keybind : Alt + Shift + L
+
+
+
+
+
+How to set them up
+
+To set them up, go to : Tools > Options > Environment > Keybind.
+
+Then type the "VS Command" into the "Show Commands Containing:" textbox.
+Select the command you want to modify binds for.
+Then "Remove" the current binding for the command.(Optional, also, there might be multiple binds for 1 command.)
+Then click inside the "Press Shortcut Keys' text box and hit your preferred shortcut keys.
+Then click "Assign"
+Then click "Ok"
