@@ -1,0 +1,29 @@
+{
+    "window.zoomLevel": 1,
+    "workbench.startupEditor": "newUntitledFile",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "files.exclude": {
+        "**/.DS_Store": true,
+        "**/.git": true,
+        "**/*.js": {
+            "when": "$(basename).ts"
+        },
+        "**/*.css": { 
+            "when": "$(basename).scss"
+        },
+        "**/**/*.css": { 
+            "when": "$(basename).scss"
+        },
+        "**/**/**/*.css": { 
+            "when": "$(basename).scss"
+        },
+        "**/**/**/**/*.css": { 
+            "when": "$(basename).scss"
+        },
+    },
+    "editor.fontSize": 13,
+    "nativescript.analytics.enabled": true,
+    "editor.dragAndDrop": false,
+    "editor.minimap.enabled": false,
+    "workbench.colorTheme": "One Monokai 80s"
+}
