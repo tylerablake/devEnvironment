@@ -32,6 +32,5 @@ function __prompt_command() {
 }
 
 # shortcuts and aliases
-alias workspace='cd ~/Documents/github/'
-alias wakedevboxlocal='wakeonlan  50:46:5D:67:34:2E'
-alias wakedevboxremote='wakeonlan -i 74.134.238.171 -p 9 50:46:5D:67:34:2E'
+alias github='cd ~/Documents/github/'
+alias tfs='cd ~/Documents/tfs/'
